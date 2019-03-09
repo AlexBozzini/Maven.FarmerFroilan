@@ -1,15 +1,29 @@
 package com.zipcodewilmington.froilansfarm.storage;
 
-public class TomatoSilo implements Storage {
-    public void add(Object storageObject) {
+import com.zipcodewilmington.froilansfarm.producers.produce.Corn;
+import com.zipcodewilmington.froilansfarm.producers.produce.Crop;
+import com.zipcodewilmington.froilansfarm.producers.produce.Tomato;
 
+public class TomatoSilo implements Storage<Tomato> {
+    public Integer numberOfTomatoes;
+
+    public TomatoSilo(){
+        this.numberOfTomatoes = 0;
     }
 
-    public Object retrieve(Integer objectId) {
-        return null;
+    public TomatoSilo(Integer numberOfTomatoes){
+        this.numberOfTomatoes = numberOfTomatoes;
     }
 
-    public Integer getCount() {
-        return null;
+    public Integer getNumberOfTomatoes(){
+        return numberOfTomatoes;
+    }
+
+    public void setNumberOfTomatoes(Integer numberOfTomatoes){
+        this.numberOfTomatoes = numberOfTomatoes;
+    }
+
+    public void add(Tomato storageObject) {
+        numberOfTomatoes = numberOfTomatoes + 1;
     }
 }
