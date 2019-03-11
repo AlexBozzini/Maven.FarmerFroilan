@@ -1,14 +1,21 @@
 package com.zipcodewilmington.froilansfarm.animals.farmAnimal;
 
 import com.zipcodewilmington.froilansfarm.animals.Animal;
+import com.zipcodewilmington.froilansfarm.interfaceBehaviors.Edible;
 import com.zipcodewilmington.froilansfarm.producers.produce.Egg;
 import com.zipcodewilmington.froilansfarm.producers.produce.ProduceInterface;
+import com.zipcodewilmington.froilansfarm.storage.ChickenCoops;
 
 public class Chicken extends Animal implements ProduceInterface  {
-    private Egg egg;
-    private Boolean fertilized = false;
+    private Egg edibleEgg;
+    private Boolean fertilized;
 
-    public Chicken(){ }
+
+    public Chicken(){ fertilized = false;}
+
+    public Boolean isFertilized() {
+        return fertilized;
+    }
 
     public boolean hasBeenFertilized(){
         fertilized = true;
@@ -16,10 +23,16 @@ public class Chicken extends Animal implements ProduceInterface  {
     }
 
 
-    public void yield() { if (hasBeenFertilized() == true){
-        egg = new Egg();
-        fertilized = false;
+    public void setIsFertilized(Boolean fertilized) {
+        this.fertilized = hasBeenFertilized();
     }
+
+    public Egg yield() {
+        return edibleEgg;
+    }
+
+    public Egg getEgg(){
+        return edibleEgg;
     }
 
     public String makeNoise() { return "Cluck!"; }
